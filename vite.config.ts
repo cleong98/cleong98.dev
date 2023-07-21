@@ -54,11 +54,20 @@ export default defineConfig({
 
     AutoImport({
       include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/, /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+      imports: [
         'vue',
         'vue-router',
         '@vueuse/core',
-        '@unhead/vue',
-      ]
+        {
+          '[@unhead/vue]': [
+            'useHead'
+          ]
+        }
+      ],
     }),
 
     Component({
